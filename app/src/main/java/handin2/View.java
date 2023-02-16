@@ -40,11 +40,13 @@ public class View {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.setTransform(trans);
-        gc.setLineWidth(0.2);
+        gc.setLineWidth(1/Math.sqrt(trans.determinant()));
         for (var line : model.lines) {
             line.draw(gc);
         }
-
+        for (var way : model.ways) {
+            way.draw(gc);
+        }
     }
 
     void pan(double dx, double dy) {

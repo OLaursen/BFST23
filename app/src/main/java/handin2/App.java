@@ -18,10 +18,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String filename = "../app/data/lines20k.txt";
+        String filename = "app/data/kbh.osm";
         var model = new Model(filename);
         var view = new View(model, primaryStage);
-        var controller = new Controller(model, view);
-
+        new Controller(model, view);
     }
 }
