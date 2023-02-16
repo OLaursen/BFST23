@@ -6,7 +6,7 @@ package handin2;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class App extends Application{
+public class App extends Application {
     public String getGreeting() {
         return "Hello World!";
     }
@@ -21,7 +21,7 @@ public class App extends Application{
         String filename = "../app/data/lines20k.txt";
         var model = new Model(filename);
         var view = new View(model, primaryStage);
-        var controller = new Controller(model,view);
-        
+        var controller = new Controller(model, view);
+
     }
 }

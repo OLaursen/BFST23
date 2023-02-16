@@ -10,6 +10,7 @@ import javafx.geometry.Point2D;
 
 public class Model {
     List<String> lines = new ArrayList<String>();
+
     public Model(String filename) {
         File f = new File(filename);
         try {
@@ -24,13 +25,14 @@ public class Model {
         }
 
     }
+
     public void add(Point2D lastmodel, Point2D newmodel) {
-        String s = "LINES".concat(" ").concat(lastmodel.getX()+"").concat(" ")
-        .concat(lastmodel.getY()+"").concat(" ")
-        .concat(newmodel.getX()+"").concat(" ")
-        .concat(newmodel.getY()+"");
+        String s = "LINES".concat(" ").concat(lastmodel.getX() + "").concat(" ")
+                .concat(lastmodel.getY() + "").concat(" ")
+                .concat(newmodel.getX() + "").concat(" ")
+                .concat(newmodel.getY() + "");
         lines.add(s);
 
-    }   
+    }
 
 }

@@ -13,16 +13,17 @@ import javafx.scene.transform.NonInvertibleTransformException;
 import javafx.stage.Stage;
 
 public class View {
-Canvas canvas = new Canvas(640,480);
-GraphicsContext gc = canvas.getGraphicsContext2D();
-double x1 = 100;
-double y1 = 100;
-double x2 = 200;
-double y2 = 800;
+    Canvas canvas = new Canvas(640, 480);
+    GraphicsContext gc = canvas.getGraphicsContext2D();
+    double x1 = 100;
+    double y1 = 100;
+    double x2 = 200;
+    double y2 = 800;
 
-Affine trans = new Affine();
+    Affine trans = new Affine();
 
-Model model;
+    Model model;
+
     public View(Model model, Stage primaryStage) {
         this.model = model;
         primaryStage.setTitle("Draw Lines");
@@ -30,16 +31,17 @@ Model model;
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.show();
-        
+
         redraw();
-        }
-    void redraw(){
+    }
+
+    void redraw() {
         Iterator it = model.lines.iterator();
-        gc.setTransform(new Affine());   
-        
+        gc.setTransform(new Affine());
+
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        gc.setTransform(trans);  
+        gc.setTransform(trans);
         while (it.hasNext()) {
             String fileline = (String) it.next();
             String[] coord = fileline.split(" ");
@@ -49,23 +51,26 @@ Model model;
             double y2 = Double.parseDouble(coord[4]);
             gc.beginPath();
             gc.setLineWidth(0.2);
-               
+
             gc.moveTo(x1, y1);
             gc.lineTo(x2, y2);
             gc.stroke();
-    }        
-        
+        }
+
     }
-    void pan(double dx, double dy){
+
+    void pan(double dx, double dy) {
         trans.prependTranslation(dx, dy);
         redraw();
     }
-    void zoom(double dx, double dy, double factor){
+
+    void zoom(double dx, double dy, double factor) {
         pan(-dx, -dy);
         trans.prependScale(factor, factor);
-        pan(dx,dy);
+        pan(dx, dy);
         redraw();
     }
+
     public Point2D mousetoModel(double lastX, double lastY) {
         try {
             return trans.inverseTransform(lastX, lastY);
@@ -73,10 +78,6 @@ Model model;
             // TODO Auto-generated catch block
             throw new RuntimeException(e);
         }
-        
+
     }
-}   
-
-
-
-
+}
