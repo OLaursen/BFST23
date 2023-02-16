@@ -7,19 +7,15 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String filename = "app/data/kbh.osm";
-        var model = new Model(filename);
+        String filename = "data/denmark.osm.zip.obj";
+        // String filename = "app/data/kbh.osm";
+        var model = Model.load(filename);
         var view = new View(model, primaryStage);
         new Controller(model, view);
     }

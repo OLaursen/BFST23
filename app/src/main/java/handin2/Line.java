@@ -1,9 +1,11 @@
 package handin2;
 
+import java.io.Serializable;
+
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
-public class Line {
+public class Line implements Serializable {
     double x1, y1, x2, y2;
 
     public Line(String line) {

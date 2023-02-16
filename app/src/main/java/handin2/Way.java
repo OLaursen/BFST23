@@ -1,10 +1,11 @@
 package handin2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class Way {
+public class Way implements Serializable {
     double[] coords;
 
     public Way(ArrayList<Node> way) {

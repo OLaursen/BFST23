@@ -31,8 +31,9 @@ public class View {
         Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.show();
-
         redraw();
+        pan(-0.56*model.minlon, model.maxlat);
+        zoom(0, 0, canvas.getHeight() / (model.maxlat - model.minlat));
     }
 
     void redraw() {
