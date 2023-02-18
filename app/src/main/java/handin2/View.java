@@ -32,8 +32,10 @@ public class View {
         primaryStage.setScene(scene);
         primaryStage.show();
         redraw();
-        pan(-0.56*model.minlon, model.maxlat);
-        zoom(0, 0, canvas.getHeight() / (model.maxlat - model.minlat));
+
+        //Pans and zooms according to the given boundaries of the map being processed.
+        pan(-0.56*model.minlon, model.maxlat); //Pans so the map occurs in the top left corner of the UI (0,0) of the canvas
+        zoom(0, 0, canvas.getHeight() / (model.maxlat - model.minlat)); //Zooms with respect to (0,0) of canvas
     }
 
     void redraw() {
@@ -41,13 +43,20 @@ public class View {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.setTransform(trans);
-        gc.setLineWidth(1/Math.sqrt(trans.determinant()));
+        gc.setLineWidth(1/Math.sqrt(trans.determinant())); //Controls the stroke width, needs to correspond to the level of zoom. 
+
+        //For each line in model.lines, draw the line
         for (var line : model.lines) {
             line.draw(gc);
         }
+        // For each way in the model, draw the way. 
         for (var way : model.ways) {
             way.draw(gc);
         }
+        /*
+         * TODO Tilføj et forloop til at tilføje coastlines
+         * eller lignenende ting. 
+         */
     }
 
     void pan(double dx, double dy) {

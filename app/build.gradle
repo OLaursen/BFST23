@@ -72,5 +72,6 @@ jar {
 }
 
 tasks.withType(JavaExec) {
+    //Lets the program use more memory than the default setting
     jvmArgs = ['-Xms512m', '-Xmx8G']
 }

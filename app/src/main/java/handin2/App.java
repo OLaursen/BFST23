@@ -13,8 +13,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        String filename = "data/denmark.osm.zip.obj";
-        // String filename = "app/data/kbh.osm";
+        /*
+         * TODO add denmark-latest.osm, when done 
+         */
+        //String filename = "data/denmark.osm.zip"; //Add ".obj" for fast loading speeds
+        String filename = "../app/data/kbh.osm.obj";
         var model = Model.load(filename);
         var view = new View(model, primaryStage);
         new Controller(model, view);
